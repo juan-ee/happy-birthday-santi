@@ -4,13 +4,15 @@ import { parseYaml } from '@/lib/parseYaml';
 import fs from 'fs';
 import path from 'path';
 
-export const revalidate = 86400; // 24 hours
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
     try {
         let yamlText = '';
 
-        const isDummy = GOOGLE_DRIVE_FILE_ID === '1-DUMMY_ID_REPLACE_ME';
+        const isDummy = (GOOGLE_DRIVE_FILE_ID as string) === '1-DUMMY_ID_REPLACE_ME';
 
         if (isDummy) {
             console.log('Using YAML file from /public (Google Drive ID not set)');
@@ -28,7 +30,7 @@ export async function GET() {
                     error
                 );
 
-                const fallbackPath = path.join(process.cwd(), 'public', 'demo-content.yml');
+                const fallbackPath = path.join(process.cwd(), 'public', 'profile_test.yml');
                 yamlText = fs.readFileSync(fallbackPath, 'utf8');
             }
         }

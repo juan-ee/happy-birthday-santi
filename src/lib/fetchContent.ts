@@ -4,7 +4,7 @@ export async function fetchContentFromDrive(fileId: string): Promise<string> {
   const url = `https://docs.google.com/uc?export=download&id=${fileId}`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch from Google Drive: ${response.statusText}`);
