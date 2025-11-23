@@ -9,7 +9,7 @@ export async function GET() {
         let yamlText = '';
 
         // If the ID is still the placeholder, use the demo content
-        if (GOOGLE_DRIVE_FILE_ID === '1-DUMMY_ID_REPLACE_ME') {
+        if (GOOGLE_DRIVE_FILE_ID === '1-DUMMY_ID_REPLACE_ME' as string) {
             console.log('Using demo content (Google Drive ID not set)');
             yamlText = DEMO_YAML_CONTENT;
         } else {

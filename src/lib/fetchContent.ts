@@ -26,6 +26,17 @@ bio: |
   
   Based in Berlin, working globally.
 
+about:
+  photoUrl: "/profile_photo.png"
+  cvUrl: "https://example.com/cv.pdf"
+  detailedBio: |
+    Santiago Gomez started his journey in the bustling streets of Bogota, capturing the raw energy of urban life. 
+    After moving to Berlin, he refined his style, blending gritty realism with ethereal visual effects.
+    
+    His work has been featured in major festivals and galleries worldwide. He believes in cinema as a tool for empathy and social change.
+    
+    "I don't just want to show you a story; I want you to feel the texture of the moment."
+
 artworks:
   - title: "Neon Dreams"
     url: "https://www.youtube.com/watch?v=LXb3EKWsInQ"
@@ -45,4 +56,5 @@ awards:
 contact:
   email: "santiago.gomez@example.com"
   instagram: "@santi_gomezr"
+  phone: "+49 123 456 7890"
 `;

@@ -3,7 +3,11 @@
 import { motion } from 'framer-motion';
 import { Trophy } from 'lucide-react';
 
-export default function AwardsSection({ awards }: { awards: string[] }) {
+export default function AwardsSection({ awards }: { awards?: string[] }) {
+    if (!awards || awards.length === 0) {
+        return null;
+    }
+
     return (
         <section className="py-24 px-4 md:px-12 bg-neutral-900/20 border-y border-white/5">
             <div className="max-w-6xl mx-auto">

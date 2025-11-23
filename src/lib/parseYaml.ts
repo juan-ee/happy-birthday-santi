@@ -8,13 +8,22 @@ export interface Artwork {
 
 export interface Contact {
     email: string;
+    instagram?: string;
+    phone?: string;
+}
+
+export interface About {
+    photoUrl: string;
+    cvUrl: string;
+    detailedBio: string;
 }
 
 export interface PortfolioContent {
     name: string;
     bio: string;
+    about?: About;
     artworks: Artwork[];
-    awards: string[];
+    awards?: string[];
     contact: Contact;
 }
 
