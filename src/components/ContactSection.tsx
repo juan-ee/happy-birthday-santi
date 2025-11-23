@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Instagram } from 'lucide-react';
+import { Mail, Instagram, Phone } from 'lucide-react';
 import { Contact } from '@/lib/parseYaml';
 
 export default function ContactSection({ contact }: { contact: Contact }) {
@@ -34,6 +34,16 @@ export default function ContactSection({ contact }: { contact: Contact }) {
                         >
                             <Instagram className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                             {contact.instagram}
+                        </a>
+                    )}
+
+                    {contact.phone && (
+                        <a
+                            href={`tel:${contact.phone}`}
+                            className="inline-flex items-center gap-3 text-xl md:text-2xl text-muted-foreground hover:text-neon-blue transition-colors duration-300 group"
+                        >
+                            <Phone className="w-6 h-6 group-hover:animate-shake" />
+                            {contact.phone}
                         </a>
                     )}
                 </div>
