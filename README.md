@@ -6,9 +6,6 @@ This project is a cinematic filmmaking portfolio website built with Next.js 15, 
 
 - **Cinematic UI**: Dark mode, neon accents, parallax effects, and smooth animations using Framer Motion.
 - **Dynamic Content**: Content is fetched from a Google Drive YAML file via a Next.js API route.
-- **Caching**: 
-  - Server-side: API route revalidates every 24 hours.
-  - Client-side: React Query caches content for 24 hours (`staleTime`).
 - **Components**:
   - **Hero**: Parallax background and animated text.
   - **YouTube Player**: Custom player with cinematic hover effects.
@@ -20,16 +17,29 @@ This project is a cinematic filmmaking portfolio website built with Next.js 15, 
 
 ## Configuration
 
+### GitHub Setup
+
+1. Create an account on [GitHub](https://github.com) if you don't have one already.
+2. In the top-right corner, click on your profile picture and select **Repositories** from the dropdown menu.
+3. On the Repositories page, click the green **New** button to create a new repository.
+4. At the top of the page, click on the link labeled <u>Import a repository</u>.
+5. In the "Your old repository's clone URL" field, paste the following URL:  
+   `https://github.com/juan-ee/happy-birthday-santi`
+6. Complete the other fields as needed, such as repository name, description, and visibility options.
+
+
+
 ### Google Drive Setup
 
 1. **Create a YAML file** on Google Drive with the following structure:
    ```yaml
    name: "Your Name"
+   role: "Your Role"
    bio: |
      Your short biography text here.
    
    about:
-     photoUrl: "https://example.com/photo.jpg"
+     photoUrl: "https://example.com/photo.jpg" # or update profile_photo.png
      cvUrl: "https://example.com/cv.pdf"
      detailedBio: |
        Your detailed biography text here.
@@ -49,11 +59,14 @@ This project is a cinematic filmmaking portfolio website built with Next.js 15, 
      instagram: "@yourhandle"
      phone: "+1234567890"
    ```
+   You also have a sample file in [profile_test.yml](https://raw.githubusercontent.com/juan-ee/happy-birthday-santi/refs/heads/main/public/profile_test.yml) that you can download. Edit the file with the information you want to include.
 2. **Share the file**: Right-click > Share > General access > **Anyone with the link**.
 3. **Get the File ID**: The ID is the long string in the URL (e.g., `https://drive.google.com/file/d/THIS_IS_THE_ID/view`).
-4. **Update the Code**:
+4. **Update the Code on Github**:
    - Open `src/lib/fetchContent.ts`
    - Replace `1-DUMMY_ID_REPLACE_ME` with your actual File ID.
+
+**NOTE:** If you want to update the photo of your bio, either you upload overwrite the file `public/profile_photo.png` on Github, or provide a update the field `photoUrl` in the yml file you uploaded on Google Drive.
 
 ### Deployment to Vercel
 
@@ -63,9 +76,3 @@ This project is a cinematic filmmaking portfolio website built with Next.js 15, 
 4. The default settings for Next.js should work automatically.
 5. Click **Deploy**.
 
-## Future Improvements
-
-- **Multi-filmmaker support**: Add a dynamic route `/[filmmakerId]` to fetch different YAML files.
-- **Tag-based filtering**: Add tags to the YAML schema and filter artworks on the frontend.
-- **Local Search**: Implement a client-side search for artworks.
-- **Theme Toggle**: Although designed for dark mode, a light mode could be added via Tailwind's `dark:` classes.

@@ -45,7 +45,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white selection:bg-neon-blue/30 selection:text-neon-blue">
       <div className="grain-overlay" />
 
-      <Hero name={data.name} />
+      <Hero name={data.name} role={data.role} />
 
       <BioSection bio={data.bio} />
 

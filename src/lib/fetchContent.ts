@@ -1,4 +1,4 @@
-export const GOOGLE_DRIVE_FILE_ID = '1iG9VOW0RcnWZGm3ypiJrzxg4l2QqzeBn';
+export const GOOGLE_DRIVE_FILE_ID = '1-DUMMY_ID_REPLACE_ME';
 
 export async function fetchContentFromDrive(fileId: string): Promise<string> {
   const url = `https://docs.google.com/uc?export=download&id=${fileId}`;
@@ -16,45 +16,3 @@ export async function fetchContentFromDrive(fileId: string): Promise<string> {
     throw error;
   }
 }
-
-export const DEMO_YAML_CONTENT = `
-name: "Santiago Gomez"
-bio: |
-  Santiago Gomez is a visionary filmmaker exploring the boundaries of visual storytelling.
-  With a background in digital arts and cinematography, Santiago creates immersive experiences
-  that challenge perception and evoke deep emotion.
-  
-  Based in Berlin, working globally.
-
-about:
-  photoUrl: "/profile_photo.png"
-  cvUrl: "https://example.com/cv.pdf"
-  detailedBio: |
-    Santiago Gomez started his journey in the bustling streets of Bogota, capturing the raw energy of urban life. 
-    After moving to Berlin, he refined his style, blending gritty realism with ethereal visual effects.
-    
-    His work has been featured in major festivals and galleries worldwide. He believes in cinema as a tool for empathy and social change.
-    
-    "I don't just want to show you a story; I want you to feel the texture of the moment."
-
-artworks:
-  - title: "Neon Dreams"
-    url: "https://www.youtube.com/watch?v=LXb3EKWsInQ"
-    description: "A cyberpunk journey through a rain-soaked metropolis, exploring themes of artificial consciousness."
-  - title: "Silence of the Void"
-    url: "https://www.youtube.com/watch?v=jNQXAC9IVRw"
-    description: "An experimental short film shot entirely in zero-gravity simulation."
-  - title: "Echoes"
-    url: "https://www.youtube.com/watch?v=ScMzIvxBSi4"
-    description: "A documentary about the last analog sound engineers in the digital age."
-
-awards:
-  - "Best Cinematography - Sundance 2024"
-  - "Golden Bear Nominee - Berlinale 2023"
-  - "Visionary Award - SXSW 2023"
-
-contact:
-  email: "santiago.gomez@example.com"
-  instagram: "@santi_gomezr"
-  phone: "+49 123 456 7890"
-`;

@@ -20,6 +20,7 @@ export interface About {
 
 export interface PortfolioContent {
     name: string;
+    role: string;
     bio: string;
     about?: About;
     artworks: Artwork[];

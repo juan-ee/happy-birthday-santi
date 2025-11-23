@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
-import { fetchContentFromDrive, GOOGLE_DRIVE_FILE_ID, DEMO_YAML_CONTENT } from '@/lib/fetchContent';
+import { fetchContentFromDrive, GOOGLE_DRIVE_FILE_ID } from '@/lib/fetchContent';
 import { parseYaml } from '@/lib/parseYaml';
+import fs from 'fs';
+import path from 'path';
 
 export const revalidate = 86400; // 24 hours
 
@@ -8,16 +10,26 @@ export async function GET() {
     try {
         let yamlText = '';
 
-        // If the ID is still the placeholder, use the demo content
-        if (GOOGLE_DRIVE_FILE_ID === '1-DUMMY_ID_REPLACE_ME' as string) {
-            console.log('Using demo content (Google Drive ID not set)');
-            yamlText = DEMO_YAML_CONTENT;
+        const isDummy = GOOGLE_DRIVE_FILE_ID === '1-DUMMY_ID_REPLACE_ME';
+
+        if (isDummy) {
+            console.log('Using YAML file from /public (Google Drive ID not set)');
+
+            // Resolve the absolute path to the file in /public
+            const filePath = path.join(process.cwd(), 'public', 'profile_test.yml');
+
+            yamlText = fs.readFileSync(filePath, 'utf8');
         } else {
             try {
                 yamlText = await fetchContentFromDrive(GOOGLE_DRIVE_FILE_ID);
             } catch (error) {
-                console.error('Failed to fetch from Drive, falling back to demo content for safety:', error);
-                yamlText = DEMO_YAML_CONTENT;
+                console.error(
+                    'Failed to fetch from Drive, falling back to /public YAML:',
+                    error
+                );
+
+                const fallbackPath = path.join(process.cwd(), 'public', 'demo-content.yml');
+                yamlText = fs.readFileSync(fallbackPath, 'utf8');
             }
         }
 

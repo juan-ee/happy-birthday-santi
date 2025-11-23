@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
-export default function Hero({ name }: { name: string }) {
+export default function Hero({ name, role }: { name: string, role: string }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -46,7 +46,7 @@ export default function Hero({ name }: { name: string }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 1 }}
                 >
-                    Filmmaker & Visual Artist
+                    {role}
                 </motion.p>
             </motion.div>
 
